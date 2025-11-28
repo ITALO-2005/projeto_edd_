@@ -14,4 +14,22 @@ function verificar() {
          // se fechar verifica
          else if (char === ')'||char === ']'||char === '}') {
             if (pilha.isEmpty()) {valido = false; break;}
-            let ultimo
+            let ultimo = pilha.pop(); 
+        // Se o par não bater invalida
+            if(char === ')'&& ultimo !== '(') { valido = false; break; }
+            if (char === ']'&& ultimo !== '[') { valido = false; break; }
+            if (char === '}'&& ultimo !== '{') { valido = false; break; }
+        }
+    }
+    //verificando se a pilha terminou vazia
+    if (!pilha.isEmpty()) valido = false;
+
+    if (valido) {
+        saida.innerText = "Código Válido!";
+        saida.style.color = "green";
+    } else {
+        saida.innerText = "Erro de Sintaxe!";
+        saida.style.color = "red";
+    }
+}
+
